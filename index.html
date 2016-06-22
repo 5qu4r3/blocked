@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <title>Moneypot - Cloudflare Unblock Request</title>
+   
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" >
+
+</head>
+<body>
+<div class="container" style="background-color: transparent">
+
+    <div class="row">
+        <div class="col-lg-8 col-md-10 col-sm-12">
+          <div class="page-header">
+            <h2>Your IP was blocked by Cloudflare</h2>
+          </div>
+
+            <p class="lead">If you want to unblock this ip address. Please fill up the form below</p>
+          <hr>
+
+            <div class="panel panel-default">
+              <div class="panel-body">
+                <form action="/blocked" method="post">
+                    <div class="form-group">
+                        <label for="support-email">Your email address</label>
+                        <input name="email"
+                               type="email"
+                               class="form-control"
+                               id="support-email"
+                               placeholder="email@example.com"
+                               value=""
+                               required>
+                        <div class="help-block">This will let us respond to you</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="username">username</label>
+                        <input name="username"
+                               type="text"
+                               class="form-control"
+                               id="username"
+                               placeholder="username"
+                               value=""
+                               required>
+                        <div class="help-block">This will help us locate your account</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="support-input">Additional Message</label>
+                        <textarea name="message"
+                                  class="form-control"
+                                  id="support-input"
+                                  rows="3"
+                                  placeholder=""></textarea>
+                        <div class="text-block text-counter-container">
+                          <span class="text-counter">0</span>
+                          / 3000 chars
+                        </div>
+                    </div>
+
+                    <button id="support-submit"
+                            type="submit"
+                            class="btn btn-danger"
+                            >
+                  Submit</button>
+                </form>
+              </div><!-- /panel-body -->
+            </div><!-- /panel -->
+        </div>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" ></script>
+  <script type="text/javascript">
+    $('#support-input').on('keyup change blur', function() {
+      var count = $(this).val().length;
+      $('.text-counter').text(count);
+      if (count > 3000)
+        $('.text-counter-container').css('color', 'red');
+      else
+        $('.text-counter-container').css('color', 'black');
+    })
+
+</script>
+<!--
+Basic Security (CAPTCHA Challenge)  ::CAPTCHA_BOX::
+WAF (CAPTCHA Challenge)   ::CAPTCHA_BOX::
+Country Challenge (CAPTCHA Challenge)   ::CAPTCHA_BOX::
+IP address or range (Block)   ::CAPTCHA_BOX::
+I'm Under Attack Mode (Interstitial Page)   ::IM_UNDER_ATTACK_BOX::
+5XX Errors  ::CLOUDFLARE_ERROR_500S_BOX::
+1XXX Errors   ::CLOUDFLARE_ERROR_1000S_BOX::
+Always Online   ::ALWAYS_ONLINE_NO_COPY_BOX::
+-->
+</body>
+
+</html>
